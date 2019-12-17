@@ -6,7 +6,7 @@ git clone https://github.com/certbot/certbot
 # single domain
 ```sh
 cd certbot
-printf "Domain: " && read DOMAIN && ./certonly-auto certonly -d $DOMAIN
+printf "Domain: " && read DOMAIN && ./certbot-auto certonly -d $DOMAIN
 ```
 
 # wild card
