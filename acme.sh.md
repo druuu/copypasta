@@ -15,5 +15,6 @@ export DOMAIN=example.com
 ```sh
 nginx_dir=$(echo $DOMAIN | sed 's/\*/wild-card/g')
 mkdir -p /etc/nginx/certs/$nginx_dir
-cp -r ~/.acme.sh/$DOMAIN /etc/nginx/certs/$nginx_dir
+cp ~/.acme.sh/$DOMAIN/fullchain.cer /etc/nginx/certs/$nginx_dir/fullchain.pem
+cp ~/.acme.sh/$DOMAIN/$DOMAIN.key /etc/nginx/certs/$nginx_dir/privkey.pem
 ```
