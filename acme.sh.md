@@ -11,3 +11,9 @@ export DOMAIN=example.com
 ```sh
 ./acme.sh --renew -d $DOMAIN --yes-I-know-dns-manual-mode-enough-go-ahead-please --server letsencrypt
 ```
+- copy certs
+```sh
+nginx_dir=$(echo $DOMAIN | sed 's/\*/wild-card/g')
+mkdir -p /etc/nginx/certs/$nginx_dir
+cp -r ~/.acme.sh/$DOMAIN /etc/nginx/certs/$nginx_dir
+```
