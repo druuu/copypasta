@@ -1,3 +1,7 @@
+# prerequisites
+- set bucket to public access
+- set bucket policy to object-writer
+
 # install packages
 ```sh
 pip install django-compressor django-storages boto3
