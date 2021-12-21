@@ -1,3 +1,5 @@
+# may be add ses:GetSendQuota with * resources
+
 {
     "Version": "2012-10-17",
     "Statement": [
