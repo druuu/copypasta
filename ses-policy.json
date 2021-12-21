@@ -2,31 +2,15 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
                 "ses:SendEmail",
-                "ses:SendRawEmail",
-                "ses:SendBulkTemplatedEmail"
+                "ses:SendRawEmail"
             ],
-            "Resource": [
-                "arn:aws:ses:ap-south-1:123123123123:identity/example.com.com",
-                "arn:aws:ses:ap-south-1:123123123123:identity/hello@example.com.com"
-            ],
+            "Resource": "arn:aws:ses:us-east-1:8888888888:identity/hello@example.com",
             "Condition": {
                 "StringEquals": {
-                    "ses:FromAddress": "hello@example.com.com"
-                }
-            }
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": "ses:SendTemplatedEmail",
-            "Resource": "*",
-            "Condition": {
-                "StringEquals": {
-                    "ses:FromAddress": "hello@example.com.com"
+                    "ses:FromAddress": "hello@example.com"
                 }
             }
         }
