@@ -23,10 +23,23 @@ psql dbname > dbname.sql
 
 
 ## readonly user
-createuser --interactive
 psql
 \c dbname;
-GRANT CONNECT ON DATABASE dbname TO username;
-GRANT USAGE ON SCHEMA public TO username;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO username;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO username;
+
+CREATE ROLE viewer;
+
+# grant permissions
+GRANT CONNECT ON DATABASE refactored TO viewer;
+GRANT USAGE ON SCHEMA public TO viewer;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO viewer;
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO viewer;
+
+# grant permissions for future tables
+# Note that by default this will only affect objects (tables) created by the user that
+issued this command
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO viewer;
+
+
+# create child roles
+CREATE ROLE dinesh WITH LOGIN PASSWORD 'password' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION VALID UNTIL 'infinity';
+grant viewer to dinesh;
